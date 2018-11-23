@@ -17,9 +17,10 @@ function openTab(evt, tabSelect) {
 $(document).ready(function(){
 
     $('#submitWeather').click(function(){
-        var city = $("#city").val();
+        var city = $("#ciudad").val();
         var appID =("&APPID=5bafdd2fa586f9c2def148d4ed83f4f9");
-        var api =('http://api.openweathermap.org/data/2.5/weather?q=');
+                 
+        var api =('https://api.openweathermap.org/data/2.5/forecast?q=');
         var units =('&units=metric');
         if(city != ''){
             $.ajax(
@@ -31,28 +32,53 @@ $(document).ready(function(){
                         var widget = showData(data);
                         $("#show").html(widget);
                         $("#city").val('');
+
                     }
                 });
         }
         else
-        $('#error').html("<div class='alert alert-danger text-center alert-dismissible' ><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Field cannot be empty</div>");
+        $('#error').html("<div class='alert alert-danger text-center alert-dismissible' ><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Llene elcampo *</div>");
     });
 
 });
 
 function showData(data) {
-    return "<br><br><h2> Current weather for " + data.name +"," + data.sys.country + "</h2>"+
-            "<h3><strong>Weather</strong>: " + data.weather[0].main + "<img src=http://openweathermap.org/img/w/"+ data.weather[0].icon  + ".png>"+ "</h3>" +
-            "<h3><strong>Description</strong>: " + data.weather[0].description + "</h3>" +
-            "<h3><strong>Temperature</strong>: " + data.main.temp + "&deg;C</h3>" +
-            "<h3><strong>Pressure</strong>: " + data.main.pressure + " hPa</h3>"+
-            "<h3><strong>Hummidity</strong>: " + data.main.hummidity + " %</h3>"+
-            "<h3><strong>Min. Temperature</strong>: " + data.main.temp_min + "&deg;C</h3>" +
-            "<h3><strong>Max. Temperature</strong>: " + data.main.temp_max + "&deg;C</h3>"            
+    return "<br><br>"+
+
+               
+                "<p id='textTemp'>Weather in " + data.city.name +", " + data.city.country + "<img class='imgTableData'src=''>"+"</p>"+
+                "<p id='textTemp'>" + "<img id='iconTemp'src=http://openweathermap.org/img/w/"+ data.list.weather[0].icon  + ".png> " + data.list.main.temp + "&deg;C</p>"+ 
+                "<p id='textSecond'>" + data.list.weather.description[0] + "</p>"+
+                "<div class='tData'>"+
+
+                    "<table>"+
+
+
+                      "<tr>"+
+                        "<td>Hummidity</td>"+
+                        "<td>" + data.list.main.humidity + " %</td>"+
+                      "</tr>"+
+                        
+                      "<tr>"+
+                        "<td>Temperature Min.</td>"+
+                        "<td>" + data.list.main.temp_min + " &deg;C</td>"+
+                      "</tr>"+
+
+                      "<tr>"+
+                        "<td>Temperature Max.</td>"+
+                        "<td>" + data.list.main.temp_max + " &deg;C</td>"+
+                      "</tr>"+
+
+                      "<tr>"+
+                        "<td>Wind speed</td>"+
+                        "<td>" + data.list.wind.speed + " m/s</td>"+
+                      "</tr>"+
+
+                      "<tr>"+
+                        "<td>Wind direction</td>"+
+                        "<td>"+ data.list.wind.deg + " &deg;</td>"+
+                      "</tr>"+
+                       
+                    "</table>"+
+                    "</div>"
 }
-
-
-
-
-
-

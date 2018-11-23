@@ -120,3 +120,49 @@ imput[type="text"]{
   font-size: 15px;
   text-align: center;
 }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.tData{
+  float: left;
+  text-align: left;
+
+}
+.imgTableData{
+  border-radius: 90%;
+  size: 10px;
+}
+
+#textTemp{
+  font-size:25px;
+  font: 600 24px;
+  font-family: Oswald,Arial,sans-serif;
+  font-weight: bold;
+  color: gray;
+}
+
+#iconTemp{
+  width: 5%;
+  height:5%;
+ 
+}
+
+#textSecond{
+  font-size: 18px;
+  font-family: arial;
+
+}
