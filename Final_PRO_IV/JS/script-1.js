@@ -17,10 +17,11 @@ function openTab(evt, tabSelect) {
 $(document).ready(function(){
 
     $('#submitWeather').click(function(){
+
         var city = $("#ciudad").val();
         var appID =("&APPID=5bafdd2fa586f9c2def148d4ed83f4f9");
-                 
-        var api =('https://api.openweathermap.org/data/2.5/forecast?q=');
+                           
+        var api =('https://api.openweathermap.org/data/2.5/weather?q=');
         var units =('&units=metric');
         if(city != ''){
             $.ajax(
@@ -30,14 +31,14 @@ $(document).ready(function(){
                     dataType:"jsonp",
                     success: function(data){
                         var widget = showData(data);
-                        $("#show").html(widget);
-                        $("#city").val('');
+                        $("#tableData").html(widget);
+                        $("#ciudad").val('');
 
                     }
                 });
         }
         else
-        $('#error').html("<div class='alert alert-danger text-center alert-dismissible' ><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Llene elcampo *</div>");
+        $('#error').html("<div class='alert alert-danger text-center alert-dismissible' ><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Llene el campo obligatorio*</div>");
     });
 
 });
@@ -46,39 +47,55 @@ function showData(data) {
     return "<br><br>"+
 
                
-                "<p id='textTemp'>Weather in " + data.city.name +", " + data.city.country + "<img class='imgTableData'src=''>"+"</p>"+
-                "<p id='textTemp'>" + "<img id='iconTemp'src=http://openweathermap.org/img/w/"+ data.list.weather[0].icon  + ".png> " + data.list.main.temp + "&deg;C</p>"+ 
-                "<p id='textSecond'>" + data.list.weather.description[0] + "</p>"+
-                "<div class='tData'>"+
+                "<p id='textTemp'>Weather in " + data.name +", " + data.sys.country + "<img class='imgTableData'src=''>"+"</p>"+
+                "<p id='textTemp'>" + "<img id='iconTemp'src=http://openweathermap.org/img/w/"+ data.weather[0].icon  + ".png> " + data.main.temp + "&deg;C</p>"+ 
+                "<p id='textSecond'>" + data.weather[0].description + "</p>"+
 
+                "<div class='tData'>"+
                     "<table>"+
 
-
                       "<tr>"+
-                        "<td>Hummidity</td>"+
-                        "<td>" + data.list.main.humidity + " %</td>"+
+
+                        "<td><p><img src='../PIC/icons/clouds.png'width='40' height='40' align='left'></p>Cloudiness</td>"+
+                        "<td>" + data.clouds.all + " %</td>"+
+                      "</tr>"+
+                          
+                      "<tr>"+
+
+                        "<td><p><img src='../PIC/icons/humidity.png'width='40' height='40' align='left'></p>Hummidity</td>"+
+                        "<td>" + data.main.humidity + " %</td>"+
                       "</tr>"+
                         
                       "<tr>"+
-                        "<td>Temperature Min.</td>"+
-                        "<td>" + data.list.main.temp_min + " &deg;C</td>"+
+                        "<td><p><img src='../PIC/icons/temp-low.png'width='40' height='40' align='left'></p>Temperature Min.</td>"+
+                        "<td>" + data.main.temp_min + " &deg;C</td>"+
                       "</tr>"+
 
                       "<tr>"+
-                        "<td>Temperature Max.</td>"+
-                        "<td>" + data.list.main.temp_max + " &deg;C</td>"+
+                        "<td><p><img src='../PIC/icons/temp-high.png'width='40' height='40' align='left'></p>Temperature Max.</td>"+
+                        "<td>" + data.main.temp_max + " &deg;C</td>"+
                       "</tr>"+
 
                       "<tr>"+
-                        "<td>Wind speed</td>"+
-                        "<td>" + data.list.wind.speed + " m/s</td>"+
+                        "<td><p><img src='../PIC/icons/wind.png'width='40' height='40' align='left'></p>Wind speed</td>"+
+                        "<td>" + data.wind.speed + " m/s</td>"+
                       "</tr>"+
 
                       "<tr>"+
-                        "<td>Wind direction</td>"+
-                        "<td>"+ data.list.wind.deg + " &deg;</td>"+
+                        "<td><p><img src='../PIC/icons/wind-direction.png'width='40' height='40' align='left'></p>Wind direction</td>"+
+                        "<td>"+ data.wind.deg + " &deg;</td>"+
+                      "</tr>"+
+
+                      "<tr>"+
+                        "<td><p><img src='../PIC/icons/press.png'width='40' height='40' align='left'></p>Pressure</td>"+
+                        "<td>"+ data.main.pressure + " hPa</td>"+
                       "</tr>"+
                        
+                      "<tr>"+
+                        "<td><p><img src='../PIC/icons/cord.png'width='40' height='40' align='left'></p>Geo coords</td>"+
+                        "<td>Lat.: "+data.coord.lat+ ",<br> Long.: "+ data.coord.lon+ "</td>"+
+                      "</tr>"+
+
                     "</table>"+
                     "</div>"
 }
