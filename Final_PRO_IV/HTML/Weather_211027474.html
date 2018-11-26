@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Clima</title>
+	<title>Weather Forecast Page</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../CSS/style-1.css">
@@ -12,10 +12,10 @@
 <body>
 
 <div class="header">
-  <h1>El Clima</h1>
+  <h1>Forecast weather of the cities</h1>
 <div class="tab">
-  <button class="tablinks" id="tab1" onclick="openTab(event, 'local')">Clima local</button>
-  <button class="tablinks" onclick="openTab(event, 'busqueda')">Buscar clima</button>
+  <button class="tablinks" id="tab1" onclick="openTab(event, 'local')">Local weather</button>
+  <button class="tablinks" onclick="openTab(event, 'busqueda')">Search city weather</button>
 </div>
 </div>
 
@@ -25,8 +25,9 @@
 
 <div id="local" class="tabcontent">
   <div class="container"> 
-  <h3>Clima local</h3>
- 
+  <h3>Local weather</h3>
+  <div id="openweathermap-widget-11"></div>
+
 
 
   <div id="show2"></div>
@@ -36,19 +37,21 @@
 
 
 <div id="busqueda" class="tabcontent">
-  <h1 class="text-center">Buscar Ciudad</h1><br><br>
+  <h1 class="text-center">Search City</h1><br><br>
 
   <div class="container">
   	<div class="row" style="margin-bottom: 20px;">
-  		<h3>Ciudad:</h3>
+  		<h3 id="countryPanel">Country: <img id="bandera" src="" alt=""></img></h3>
   		<span id="error"></span>
   	</div>
   	<div class="row form-group form-inline" id="rowDiv">
-  		<input type="text" name="city" id="ciudad" class="form-control" placeholder="Nombre de ciudad*">
-  		<button id="submitWeather" class="btnBusca">Buscar</button> 
+  		<input type="text" name="city" id="ciudad" class="form-control" placeholder="City name*">
+  		<button id="submitWeather" class="btnBusca">Search</button> 
   	</div>
 
   	<div id="tableData"></div><!--DIV SHOW-->
+    <div id="tableDays"></div>
+      
   </div>
 
 
