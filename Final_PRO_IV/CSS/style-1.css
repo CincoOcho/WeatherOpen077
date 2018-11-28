@@ -211,13 +211,13 @@ border-radius: 100%;
 .column1 {
     float: left;
     width: auto;
-    padding: 10px;
+    padding: 5px;
     height: auto; /* Should be removed. Only for demonstration */
 }
 .column2 {
     float: right;
     width: auto;
-    padding: 10px;
+    padding: 5px;
     height: auto; /* Should be removed. Only for demonstration */
 }
 

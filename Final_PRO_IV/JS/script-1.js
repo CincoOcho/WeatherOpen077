@@ -55,21 +55,311 @@ $(document).ready(function(){
           $("#tableDays").text("");
                       //$("#clima5horas").append("<p>"+data.list[0].main.temp+"</p>");
                       var imagen;
-                      $("#tableDays").append(
-                        "<p class='textTitulo'>Weather and forecast in "+days.city.name+", "+days.city.country+"</p>"
-                        )
+                      $("#tableDay1").append(
+                        "<p class='textTitulo'>Weather and forecast in "+days.city.name+", "+days.city.country+"</p>");
                       
                      
-                      for( j=0; j<9; j++){
+                      for( j=0; j<=3; j++){
                        imagen=retornarimagen(days.list[j].weather[0].icon);
-                       $("#tableDays").append(
+                       $("#tableDay1").append(                         
+"<div class='tData'>"+
+  "<table>"+
+"<tr>"+
+  "<td><p>Fecha/Hora</p></td>"+
+  "<td>" + days.list[j].dt_txt + "</td>"+
+  "</tr>"+
 
-                        "<p> la temperatura:  "+days.list[j].main.temp+" la hora: "+
-                        days.list[j].dt_txt+"</p> <img src=" +imagen+" /> ");
+  "<tr>"+
+  "<td><p>Condition</p><img src=" +imagen+" </td>"+
+  "<td>"+ days.list[j].weather[0].description +"</td>"+
+  "</tr>"+
+
+
+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/TEMP.png'width='20' height='20' align='left'></p>Temperature</td>"+
+  "<td>" + days.list[j].main.temp + "&deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/clouds.png'width='20' height='20' align='left'></p>Cloudiness</td>"+
+  "<td>" + days.list[j].clouds.all  + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/humidity.png'width='20' height='20' align='left'></p>Hummidity</td>"+
+  "<td>" + days.list[j].main.humidity + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-low.png'width='20' height='20' align='left'></p>Temperature Min.</td>"+
+  "<td>" + days.list[j].main.temp_min + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-high.png'width='20' height='20' align='left'></p>Temperature Max.</td>"+
+  "<td>" + days.list[j].main.temp_max + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind.png'width='20' height='20' align='left'></p>Wind speed</td>"+
+  "<td>" + days.list[j].wind.speed + " m/s</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind-direction.png'width='20' height='20' align='left'></p>Wind direction</td>"+
+  "<td>"+ days.list[j].wind.deg + " &deg;</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/press.png'width='20' height='20' align='left'></p>Pressure</td>"+
+  "<td>"+ days.list[j].main.pressure + " hPa</td>"+
+  "</tr>"+
+  "<br><br>"+
+  "</table>"+
+  "</div>"
+
+                        );
 
                      }
 
-                   }
+                    for( j=9; j<=12; j++){
+                       imagen=retornarimagen(days.list[j].weather[0].icon);
+                       $("#tableDay2").append(
+
+"<div class='tData'>"+
+  "<table>"+
+"<tr>"+
+  "<td><p>Fecha/Hora</p></td>"+
+  "<td>" + days.list[j].dt_txt + "</td>"+
+  "</tr>"+
+
+  "<tr>"+
+  "<td><p>Condition</p><img src=" +imagen+" </td>"+
+  "<td>"+ days.list[j].weather[0].description +"</td>"+
+  "</tr>"+
+
+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/TEMP.png'width='20' height='20' align='left'></p>Temperature</td>"+
+  "<td>" + days.list[j].main.temp + "&deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/clouds.png'width='20' height='20' align='left'></p>Cloudiness</td>"+
+  "<td>" + days.list[j].clouds.all  + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/humidity.png'width='20' height='20' align='left'></p>Hummidity</td>"+
+  "<td>" + days.list[j].main.humidity + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-low.png'width='20' height='20' align='left'></p>Temperature Min.</td>"+
+  "<td>" + days.list[j].main.temp_min + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-high.png'width='20' height='20' align='left'></p>Temperature Max.</td>"+
+  "<td>" + days.list[j].main.temp_max + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind.png'width='20' height='20' align='left'></p>Wind speed</td>"+
+  "<td>" + days.list[j].wind.speed + " m/s</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind-direction.png'width='20' height='20' align='left'></p>Wind direction</td>"+
+  "<td>"+ days.list[j].wind.deg + " &deg;</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/press.png'width='20' height='20' align='left'></p>Pressure</td>"+
+  "<td>"+ days.list[j].main.pressure + " hPa</td>"+
+  "</tr>"+
+  "<br><br>"+
+  "</table>"+
+  "</div>"
+                                );
+                       
+                             }
+
+            
+
+
+
+
+                    for( j=17; j<=20; j++){
+                       imagen=retornarimagen(days.list[j].weather[0].icon);
+                       $("#tableDay3").append(
+"<div class='tData'>"+
+  "<table>"+
+"<tr>"+
+  "<td><p>Fecha/Hora</p></td>"+
+  "<td>" + days.list[j].dt_txt + "</td>"+
+  "</tr>"+
+
+  "<tr>"+
+  "<td><p>Condition</p><img src=" +imagen+" </td>"+
+  "<td>"+ days.list[j].weather[0].description +"</td>"+
+  "</tr>"+
+
+
+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/TEMP.png'width='20' height='20' align='left'></p>Temperature</td>"+
+  "<td>" + days.list[j].main.temp + "&deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/clouds.png'width='20' height='20' align='left'></p>Cloudiness</td>"+
+  "<td>" + days.list[j].clouds.all  + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/humidity.png'width='20' height='20' align='left'></p>Hummidity</td>"+
+  "<td>" + days.list[j].main.humidity + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-low.png'width='20' height='20' align='left'></p>Temperature Min.</td>"+
+  "<td>" + days.list[j].main.temp_min + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-high.png'width='20' height='20' align='left'></p>Temperature Max.</td>"+
+  "<td>" + days.list[j].main.temp_max + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind.png'width='20' height='20' align='left'></p>Wind speed</td>"+
+  "<td>" + days.list[j].wind.speed + " m/s</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind-direction.png'width='20' height='20' align='left'></p>Wind direction</td>"+
+  "<td>"+ days.list[j].wind.deg + " &deg;</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/press.png'width='20' height='20' align='left'></p>Pressure</td>"+
+  "<td>"+ days.list[j].main.pressure + " hPa</td>"+
+  "</tr>"+
+  "<br><br>"+
+  "</table>"+
+  "</div>"
+
+
+                       );
+                       
+                     }
+
+                       for( j=25; j<=28; j++){
+                       imagen=retornarimagen(days.list[j].weather[0].icon);
+                       $("#tableDay4").append(
+
+                      "<div class='tData'>"+
+  "<table>"+
+"<tr>"+
+  "<td><p>Fecha/Hora</p></td>"+
+  "<td>" + days.list[j].dt_txt + "</td>"+
+  "</tr>"+
+
+  "<tr>"+
+  "<td><p>Condition</p><img src=" +imagen+" </td>"+
+  "<td>"+ days.list[j].weather[0].description +"</td>"+
+  "</tr>"+
+
+
+
+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/TEMP.png'width='20' height='20' align='left'></p>Temperature</td>"+
+  "<td>" + days.list[j].main.temp + "&deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/clouds.png'width='20' height='20' align='left'></p>Cloudiness</td>"+
+  "<td>" + days.list[j].clouds.all  + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/humidity.png'width='20' height='20' align='left'></p>Hummidity</td>"+
+  "<td>" + days.list[j].main.humidity + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-low.png'width='20' height='20' align='left'></p>Temperature Min.</td>"+
+  "<td>" + days.list[j].main.temp_min + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-high.png'width='20' height='20' align='left'></p>Temperature Max.</td>"+
+  "<td>" + days.list[j].main.temp_max + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind.png'width='20' height='20' align='left'></p>Wind speed</td>"+
+  "<td>" + days.list[j].wind.speed + " m/s</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind-direction.png'width='20' height='20' align='left'></p>Wind direction</td>"+
+  "<td>"+ days.list[j].wind.deg + " &deg;</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/press.png'width='20' height='20' align='left'></p>Pressure</td>"+
+  "<td>"+ days.list[j].main.pressure + " hPa</td>"+
+  "</tr>"+
+  "<br><br>"+
+  "</table>"+
+  "</div>"
+                      );
+                       
+                     }
+
+                       for( j=33; j<=36; j++){
+                       imagen=retornarimagen(days.list[j].weather[0].icon);
+                       $("#tableDay5").append(
+
+                        
+                        "<div class='tData'>"+
+  "<table>"+
+"<tr>"+
+  "<td><p>Fecha/Hora</p></td>"+
+  "<td>" + days.list[j].dt_txt + "</td>"+
+  "</tr>"+
+
+  "<tr>"+
+  "<td><p>Condition</p><img src=" +imagen+" </td>"+
+  "<td>"+ days.list[j].weather[0].description +"</td>"+
+  "</tr>"+
+
+
+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/TEMP.png'width='20' height='20' align='left'></p>Temperature</td>"+
+  "<td>" + days.list[j].main.temp + "&deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/clouds.png'width='20' height='20' align='left'></p>Cloudiness</td>"+
+  "<td>" + days.list[j].clouds.all  + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/humidity.png'width='20' height='20' align='left'></p>Hummidity</td>"+
+  "<td>" + days.list[j].main.humidity + " %</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-low.png'width='20' height='20' align='left'></p>Temperature Min.</td>"+
+  "<td>" + days.list[j].main.temp_min + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/temp-high.png'width='20' height='20' align='left'></p>Temperature Max.</td>"+
+  "<td>" + days.list[j].main.temp_max + " &deg;C</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind.png'width='20' height='20' align='left'></p>Wind speed</td>"+
+  "<td>" + days.list[j].wind.speed + " m/s</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/wind-direction.png'width='20' height='20' align='left'></p>Wind direction</td>"+
+  "<td>"+ days.list[j].wind.deg + " &deg;</td>"+
+  "</tr>"+
+  "<tr>"+
+  "<td><p><img src='../PIC/icons/press.png'width='20' height='20' align='left'></p>Pressure</td>"+
+  "<td>"+ days.list[j].main.pressure + " hPa</td>"+
+  "</tr>"+
+  "<br><br>"+
+  "</table>"+
+  "</div>"
+
+                        );
+                       
+                     }
+
+
+
+
+
+
+
+
+                    } //IF to empty textSearch
 
                  });
 
